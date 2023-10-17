@@ -24,6 +24,11 @@ public class OrientadorDAO implements DAO<Orientador> {
         manager.getTransaction().commit();
         manager.close(); 
     }
+    
+    @Override
+    public Orientador buscarPorId(Long id){
+         return manager.find(Orientador.class, id);
+    }
 
     @Override
     public void atualizar(Orientador orientador) {

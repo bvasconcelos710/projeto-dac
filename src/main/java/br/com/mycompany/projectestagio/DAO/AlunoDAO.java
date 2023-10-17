@@ -24,6 +24,11 @@ public class AlunoDAO implements DAO<Aluno> {
         manager.getTransaction().commit();
         manager.close(); 
     }
+    
+    @Override
+    public Aluno buscarPorId(Long id){
+         return manager.find(Aluno.class, id);
+    }
 
     @Override
     public void atualizar(Aluno aluno) {

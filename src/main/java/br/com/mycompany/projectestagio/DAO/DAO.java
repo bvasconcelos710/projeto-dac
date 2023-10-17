@@ -13,6 +13,8 @@ import java.util.List;
 public interface DAO<T> {
     void inserir(T entidade);
     
+    T buscarPorId(Long id);
+    
     void atualizar(T entidade);
     
     void remover(Long id);

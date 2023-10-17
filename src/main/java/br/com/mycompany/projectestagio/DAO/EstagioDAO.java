@@ -27,6 +27,11 @@ public class EstagioDAO implements DAO<Estagio> {
         manager.getTransaction().commit();
         manager.close(); 
     }
+    
+    @Override
+    public Estagio buscarPorId(Long id){
+         return manager.find(Estagio.class, id);
+    }
 
     @Override
     public void atualizar(Estagio estagio) {
@@ -53,6 +58,16 @@ public class EstagioDAO implements DAO<Estagio> {
         List<Estagio> estagios = query.getResultList();
         manager.close();
         return estagios;
+    }
+    
+     public Estagio filtrarEstagioPorMatricula(String matricula) {
+        TypedQuery<Estagio> query = manager.createQuery(
+            "SELECT e FROM Estagio e WHERE e.aluno.matricula = :matricula",
+            Estagio.class
+        );
+        query.setParameter("matricula", matricula);
+        Estagio estagio = query.getSingleResult();
+        return estagio;
     }
     
 }

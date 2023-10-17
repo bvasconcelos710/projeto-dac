@@ -11,12 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-//import javax.persistence.OneToMany;
 
-/**
- *
- * @author Bruno
- */
+
 @Entity
 public class Aluno implements Serializable {
         
@@ -25,17 +21,6 @@ public class Aluno implements Serializable {
     private Long id;
     private String nome;
     private String matricula;
-
-//    @ManyToOne
-//    @JoinColumn(name="empresa_id")
-//    private Empresa empresa;
-
-//    @ManyToOne
-//    @JoinColumn(name="orientador_id")
-//    private Orientador orientador;
-
-    //@OneToMany(mappedBy = "aluno");
-    //private List<Estagio> estagios;
     
      public Aluno() {
     }
@@ -45,14 +30,22 @@ public class Aluno implements Serializable {
         this.nome = nome;
         this.matricula = matricula;
     }
-    
-    
 
-
+    public Aluno(Long id, String nome, String matricula) {
+        this.id = id;
+        this.nome = nome;
+        this.matricula = matricula;
+    }
+    
+           
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+        
     public String getNome() {
         return nome;
     }
@@ -69,20 +62,5 @@ public class Aluno implements Serializable {
         this.matricula = matricula;
     }
 
-//    public Empresa getEmpresa() {
-//        return empresa;
-//    }
-//
-//     public void setEmpresa(Empresa empresa) {
-//        this.empresa = empresa;
-//    }
-    
-//    public Orientador getOrientador() {
-//        return orientador;
-//    }
-//    
-//    public void setOrientador(Orientador orientador) {
-//        this.orientador = orientador;
-//    }
 
 }

@@ -24,6 +24,11 @@ public class EmpresaDAO implements DAO<Empresa> {
         manager.getTransaction().commit();
         manager.close(); 
     }
+    
+    @Override
+    public Empresa buscarPorId(Long id){
+         return manager.find(Empresa.class, id);
+    }
 
     @Override
     public void atualizar(Empresa empresa) {

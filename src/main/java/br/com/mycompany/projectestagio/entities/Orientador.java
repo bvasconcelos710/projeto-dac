@@ -19,22 +19,52 @@ public class Orientador implements Serializable  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private String disciplina;
 
     @OneToMany
     private Set<Aluno> alunos = new HashSet<>();
 
-   
+    public Orientador() {
+    }
 
+    public Orientador(String nome, String disciplina) {
+        this.nome = nome;
+        this.disciplina = disciplina;
+    }
+
+    public Orientador(Long id, String nome, String disciplina) {
+        this.id = id;
+        this.nome = nome;
+        this.disciplina = disciplina;
+    }
+    
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+       
     public String getNome() {
         return nome;
     }
-
+       
     public void setNome(String nome) {
         this.nome = nome;
     }
-        
-//    public Set<Aluno> getAlunos() {
-//        return alunos;
-//    }
+
+    public String getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(String disciplina) {
+        this.disciplina = disciplina;
+    }
+                
+    public Set<Aluno> getAlunos() {
+        return alunos;
+    }
    
    }

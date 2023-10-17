@@ -5,6 +5,9 @@
 package br.com.mycompany.projectestagio.factory;
 
 import br.com.mycompany.projectestagio.DAO.AlunoDAO;
+import br.com.mycompany.projectestagio.DAO.EmpresaDAO;
+import br.com.mycompany.projectestagio.DAO.EstagioDAO;
+import br.com.mycompany.projectestagio.DAO.OrientadorDAO;
 import br.com.mycompany.projectestagio.entities.Aluno;
 import br.com.mycompany.projectestagio.entities.Empresa;
 import br.com.mycompany.projectestagio.entities.Estagio;
@@ -16,18 +19,17 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 public class Factory {
-    
-        public static void main(String[] args) {
-            
-//            AlunoDAO aluno = new AlunoDAO();
-//             List<Aluno> alunos = aluno.listar();
-//             for(Aluno a: alunos){
-//                 System.out.println("Nome: " + a.getNome());
-//             }
+
+    public static void main(String[] args) {
 
 
-        }
+
+
         
-      
         
+        
+        
+        
+
+    }
 }

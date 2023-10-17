@@ -27,18 +27,27 @@ public class Empresa implements Serializable  {
 
     public Empresa() {
     }
-    
-    
+        
     public Empresa(String nome, String cnpj) {
         this.nome = nome;
         this.cnpj = cnpj;
     }
-    
+
+    public Empresa(Long id, String nome, String cnpj) {
+        this.id = id;
+        this.nome = nome;
+        this.cnpj = cnpj;
+    }
+           
 
     public Long getId() {
         return id;
     }
-    
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+            
     public String getNome() {
         return nome;
     }
