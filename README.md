@@ -1,6 +1,6 @@
-# Projeto de Desenvolvimento de Aplicações Corporativas
+## Projeto de Desenvolvimento de Aplicações Corporativas
 
-# Equipe
+## Equipe
 * Bruno Vasconcelos
 * Geraldo Mendes
 * José Ferreira
