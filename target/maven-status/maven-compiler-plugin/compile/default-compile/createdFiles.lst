@@ -10,3 +10,4 @@ br\com\mycompany\projectestagio\DAO\EmpresaDAO.class
 br\com\mycompany\projectestagio\entities\Empresa.class
 br\com\mycompany\projectestagio\DAO\DAO.class
 br\com\mycompany\projectestagio\DAO\EstagioDAO.class
+br\com\mycompany\projectestagio\factory\PersistenceFactory.class

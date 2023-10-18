@@ -4,18 +4,18 @@
  */
 package br.com.mycompany.projectestagio.DAO;
 
+import br.com.mycompany.projectestagio.factory.PersistenceFactory;
 import br.com.mycompany.projectestagio.entities.Aluno;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 
 
 public class AlunoDAO implements DAO<Aluno> {
     
-    EntityManagerFactory factory = Persistence.createEntityManagerFactory("my_persistence_unit");
-    EntityManager manager = factory.createEntityManager();
+    private EntityManager manager = PersistenceFactory.getEntityManager();
 
     @Override
     public void inserir(Aluno aluno) {
@@ -50,7 +50,7 @@ public class AlunoDAO implements DAO<Aluno> {
     }
 
     @Override
-    public List listar() {
+    public List<Aluno> listar() {
         TypedQuery<Aluno> query = manager.createQuery("SELECT a FROM Aluno a", Aluno.class);
         List<Aluno> alunos = query.getResultList();
         manager.close();

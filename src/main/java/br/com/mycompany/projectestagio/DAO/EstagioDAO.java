@@ -5,11 +5,12 @@
 package br.com.mycompany.projectestagio.DAO;
 
 import br.com.mycompany.projectestagio.entities.Estagio;
+import br.com.mycompany.projectestagio.factory.PersistenceFactory;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 
 /**
  *
@@ -17,8 +18,7 @@ import javax.persistence.TypedQuery;
  */
 public class EstagioDAO implements DAO<Estagio> {
 
-    EntityManagerFactory factory = Persistence.createEntityManagerFactory("my_persistence_unit");
-    EntityManager manager = factory.createEntityManager();
+    private EntityManager manager = PersistenceFactory.getEntityManager();
     
     @Override
     public void inserir(Estagio estagio) {
