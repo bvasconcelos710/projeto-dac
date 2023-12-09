@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.mycompany.projectestagio.DAO;
+package br.com.mycompany.projectestagio.model.DAO;
 
-import br.com.mycompany.projectestagio.entities.Estagio;
-import br.com.mycompany.projectestagio.factory.PersistenceFactory;
+import br.com.mycompany.projectestagio.model.entities.Estagio;
+import br.com.mycompany.projectestagio.model.utils.PersistenceFactory;
 import java.util.List;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

@@ -6,6 +6,6 @@
 * José Ferreira
 * Letícia Estrela
 
-## Para roda o projeto coloque o seguinte na linha de comando:
+## Para rodar o projeto coloque o seguinte na linha de comando:
 
 mvn clean install wildfly-jar:dev-watch

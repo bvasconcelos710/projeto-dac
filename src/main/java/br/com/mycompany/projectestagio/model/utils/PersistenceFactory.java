@@ -1,4 +1,4 @@
-package br.com.mycompany.projectestagio.factory;
+package br.com.mycompany.projectestagio.model.utils;
 
 
 import jakarta.persistence.EntityManager;

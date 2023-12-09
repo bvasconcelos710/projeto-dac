@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.mycompany.projectestagio.factory;
+package br.com.mycompany.projectestagio.model.utils;
 
-import br.com.mycompany.projectestagio.DAO.AlunoDAO;
-import br.com.mycompany.projectestagio.DAO.EmpresaDAO;
-import br.com.mycompany.projectestagio.DAO.EstagioDAO;
-import br.com.mycompany.projectestagio.DAO.OrientadorDAO;
-import br.com.mycompany.projectestagio.entities.Aluno;
-import br.com.mycompany.projectestagio.entities.Empresa;
-import br.com.mycompany.projectestagio.entities.Estagio;
-import br.com.mycompany.projectestagio.entities.Orientador;
+import br.com.mycompany.projectestagio.model.DAO.AlunoDAO;
+import br.com.mycompany.projectestagio.model.DAO.EmpresaDAO;
+import br.com.mycompany.projectestagio.model.DAO.EstagioDAO;
+import br.com.mycompany.projectestagio.model.DAO.OrientadorDAO;
+import br.com.mycompany.projectestagio.model.entities.Aluno;
+import br.com.mycompany.projectestagio.model.entities.Empresa;
+import br.com.mycompany.projectestagio.model.entities.Estagio;
+import br.com.mycompany.projectestagio.model.entities.Orientador;
 
 import java.util.List;
 
