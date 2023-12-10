@@ -6,15 +6,18 @@ package br.com.mycompany.projectestagio.model.DAO;
 
 import br.com.mycompany.projectestagio.model.entities.Empresa;
 import br.com.mycompany.projectestagio.model.utils.PersistenceFactory;
+import jakarta.inject.Named;
 import java.util.List;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
+import java.io.Serializable;
 
-
-public class EmpresaDAO implements DAO<Empresa> {
-
+@Named
+public class EmpresaDAO implements DAO<Empresa>, Serializable {
+    private static final long serialVersionUID = 1L;
+    
     private EntityManager manager = PersistenceFactory.getEntityManager();
     
     @Override

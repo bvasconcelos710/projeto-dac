@@ -5,7 +5,7 @@
 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
     <persistence-unit name="my_persistence_unit">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!--<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="jakarta.persistence.jdbc.url"

@@ -11,9 +11,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
+import java.io.Serializable;
 
 
-public class AlunoDAO implements DAO<Aluno> {
+public class AlunoDAO implements DAO<Aluno>, Serializable {
+    private static final long serialVersionUID = 1L;
     
     private EntityManager manager = PersistenceFactory.getEntityManager();
 

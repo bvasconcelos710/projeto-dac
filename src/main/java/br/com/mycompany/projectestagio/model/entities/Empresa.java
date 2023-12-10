@@ -13,7 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
-@Entity
+@Entity(name = "Empresa")
 public class Empresa implements Serializable  {
         
     @Id

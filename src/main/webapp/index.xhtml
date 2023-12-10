@@ -6,14 +6,35 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <title>JSF Bootable Jar example</title>
+    <title>Sistema Estágios</title>
     <h:outputStylesheet library="css" name="styles.css"/>
 </h:head>
 <h:body>
     <div class="main">
-        Message: #{indexBean.helloMessage}.
-        <p><p:clock />
-        </p>
+        
+        <h:form>
+        <p:menubar>
+            <p:submenu label="Opções">
+                <p:menuitem value="Aluno" action="/aluno?faces-redirect=true" />
+                <p:menuitem value="Empresa" action="empresa" />
+                <p:menuitem value="Orientador" action="orientador" />
+                <p:menuitem value="Estágio" action="estagio" />
+            </p:submenu>
+        </p:menubar>
+    </h:form>
+        
     </div>
+    
+    <h:form>
+			<h3>
+				<h:commandLink value="Ir para cadastro de Editoras"
+					action="cadastro-editora-layout?faces-redirect=true" />
+			</h3>
+			<h3>
+				<h:commandLink value="Ir para cadastro de Livros"
+					action="cadastro-livro-layout?faces-redirect=true" />
+			</h3>
+		</h:form>
+    
 </h:body>
 </html>
