@@ -5,15 +5,18 @@
 package br.com.mycompany.projectestagio.model.DAO;
 
 import br.com.mycompany.projectestagio.model.entities.Orientador;
+import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import java.io.Serializable;
 
 import java.util.List;
 
-
-public class OrientadorDAO implements DAO<Orientador> {
-
+@Named
+public class OrientadorDAO implements DAO<Orientador>, Serializable {
+    private static final long serialVersionUID = 1L;
+    
     @PersistenceContext(unitName = "my_persistence_unit")
     private EntityManager manager;
 
