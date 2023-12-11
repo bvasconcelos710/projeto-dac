@@ -2,15 +2,15 @@ package br.com.mycompany.projectestagio.view.managedbeans;
 
 import br.com.mycompany.projectestagio.controller.services.AlunoService;
 import br.com.mycompany.projectestagio.model.DAO.AlunoDAO;
-import br.com.mycompany.projectestagio.model.DAO.EmpresaDAO;
 import br.com.mycompany.projectestagio.model.entities.Aluno;
-import br.com.mycompany.projectestagio.model.entities.Empresa;
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.primefaces.PrimeFaces;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,58 +21,87 @@ import java.util.List;
  */
 
 /**
- *
  * @author Bruno
  */
 @Named
 @ViewScoped
 public class AlunoBean implements Serializable {
     private static final long serialVersionUID = 1L;
-    
-        @Inject
-	private AlunoService alunoService;
-	
-	@Inject
-	private AlunoDAO alunoDAO;
-        
-        @Inject
-	private EmpresaDAO empresaDAO;
-	
-	
-	private Aluno aluno = new Aluno();
-        
-        private List<Aluno> alunos = new ArrayList<>(); 
-	private List<Empresa> empresas = new ArrayList<>();;
 
-	@PostConstruct
-	public void init() {
-		this.empresas = this.empresaDAO.listar();
-	}
+    private AlunoService alunoService;
+    private AlunoDAO alunoDAO;
 
-	public void salvar() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		try {
-			this.alunoService.salvar(aluno);
-			this.aluno = new Aluno();
-			context.addMessage(null, new FacesMessage("ALuno salvo com sucesso!"));
-		} catch (Exception e) {
-			FacesMessage mensagem = new FacesMessage(e.getMessage());
-			mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
-			context.addMessage(null, mensagem);
-		} 
-	}
-	
-	
-	public void listarAlunos() {
-		this.alunos = this.alunoDAO.listar();
-	}
+    private List<Aluno> alunos = new ArrayList<>();
 
-    public Aluno getAluno() {
-        return aluno;
+    private Aluno alunoSelecionado;
+    private List<Aluno> alunosSelecionados;
+
+    @Inject
+    public AlunoBean(AlunoService alunoService, AlunoDAO alunoDAO) {
+        this.alunoService = alunoService;
+        this.alunoDAO = alunoDAO;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    @PostConstruct
+    public void init() {
+        this.alunos = this.alunoDAO.listar();
+    }
+
+    public void salvar() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            if (alunoSelecionado.getId() == null) {
+                this.alunoService.salvar(alunoSelecionado);
+                context.addMessage(null, new FacesMessage("Aluno salvo com sucesso!"));
+            } else {
+                this.alunoService.editar(alunoSelecionado);
+                context.addMessage(null, new FacesMessage("Aluno editado com sucesso!"));
+            }
+            this.alunos = this.alunoDAO.listar();
+        } catch (Exception e) {
+            FacesMessage mensagem = new FacesMessage(e.getMessage());
+            mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
+            context.addMessage(null, mensagem);
+        }
+        PrimeFaces.current().executeScript("PF('manageAlunoDialog').hide()");
+        PrimeFaces.current().ajax().update("formAluno:messages", "formAluno:alunosTable");
+    }
+
+    public void excluir() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            this.alunoService.excluir(alunoSelecionado);
+            this.alunos.remove(alunoSelecionado);
+            context.addMessage(null, new FacesMessage("Aluno excluído com sucesso!"));
+        } catch (Exception e) {
+            FacesMessage mensagem = new FacesMessage(e.getMessage());
+            mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
+            context.addMessage(null, mensagem);
+        }
+        PrimeFaces.current().ajax().update("formAluno:messages", "formAluno:alunosTable");
+    }
+
+    public void novo() {
+        this.alunoSelecionado = new Aluno();
+    }
+
+    public void excluirAlunosSelecionados() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            this.alunoService.excluir(alunosSelecionados);
+            this.alunos.removeAll(alunosSelecionados);
+            this.alunosSelecionados = null;
+            context.addMessage(null, new FacesMessage("Alunos excluídos com sucesso!"));
+        } catch (Exception e) {
+            FacesMessage mensagem = new FacesMessage(e.getMessage());
+            mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
+            context.addMessage(null, mensagem);
+        }
+        PrimeFaces.current().ajax().update("formAluno:messages", "formAluno:alunosTable");
+    }
+
+    public boolean hasAlunosSelecionados() {
+        return this.alunosSelecionados != null && !this.alunosSelecionados.isEmpty();
     }
 
     public List<Aluno> getAlunos() {
@@ -83,16 +112,19 @@ public class AlunoBean implements Serializable {
         this.alunos = alunos;
     }
 
-    public List<Empresa> getEmpresas() {
-        return empresas;
+    public List<Aluno> getAlunosSelecionados() {
+        return alunosSelecionados;
     }
 
-    public void setEmpresas(List<Empresa> empresas) {
-        this.empresas = empresas;
+    public void setAlunosSelecionados(List<Aluno> alunosSelecionados) {
+        this.alunosSelecionados = alunosSelecionados;
     }
-        
-        
-        
-        
-        
+
+    public Aluno getAlunoSelecionado() {
+        return alunoSelecionado;
+    }
+
+    public void setAlunoSelecionado(Aluno alunoSelecionado) {
+        this.alunoSelecionado = alunoSelecionado;
+    }
 }

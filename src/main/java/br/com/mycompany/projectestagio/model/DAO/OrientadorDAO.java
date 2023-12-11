@@ -5,56 +5,46 @@
 package br.com.mycompany.projectestagio.model.DAO;
 
 import br.com.mycompany.projectestagio.model.entities.Orientador;
-import br.com.mycompany.projectestagio.model.utils.PersistenceFactory;
-import java.util.List;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+
+import java.util.List;
 
 
 public class OrientadorDAO implements DAO<Orientador> {
-    
-    private EntityManager manager = PersistenceFactory.getEntityManager();
+
+    @PersistenceContext(unitName = "my_persistence_unit")
+    private EntityManager manager;
 
     @Override
     public void inserir(Orientador orientador) {
-        manager.getTransaction().begin();
         manager.persist(orientador);
-        manager.getTransaction().commit();
-        manager.close(); 
     }
-    
+
     @Override
-    public Orientador buscarPorId(Long id){
-         return manager.find(Orientador.class, id);
+    public Orientador buscarPorId(Long id) {
+        return manager.find(Orientador.class, id);
     }
 
     @Override
     public void atualizar(Orientador orientador) {
-        manager.getTransaction().begin();
         manager.merge(orientador);
-        manager.getTransaction().commit();
-        manager.close(); 
     }
 
     @Override
     public void remover(Long id) {
-        manager.getTransaction().begin();
         Orientador orientador = manager.find(Orientador.class, id);
         if (orientador != null) {
-        manager.remove(orientador);
+            manager.remove(orientador);
         }
-        manager.getTransaction().commit();
-        manager.close();
     }
 
     @Override
-    public List listar() {
+    public List<Orientador> listar() {
         TypedQuery<Orientador> query = manager.createQuery("SELECT o FROM Orientador o", Orientador.class);
         List<Orientador> orientadores = query.getResultList();
-        manager.close();
         return orientadores;
     }
-    
+
 }

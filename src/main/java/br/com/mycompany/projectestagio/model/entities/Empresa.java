@@ -22,9 +22,6 @@ public class Empresa implements Serializable  {
     private String nome;
     private String cnpj;
 
-    @OneToMany
-    private Set<Aluno> alunos = new HashSet<>();
-
     public Empresa() {
     }
         
@@ -63,12 +60,4 @@ public class Empresa implements Serializable  {
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
-    
-            
-    public Set<Aluno> getAlunos() {
-        return alunos;
-    }
-
-    
-   
 }

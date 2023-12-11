@@ -6,14 +6,14 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>projectestagio-1.0-SNAPSHOT</name>
-    
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jakartaee.version>10.0.0</jakartaee.version>
         <primefaces.version>12.0.0</primefaces.version>
         <version.wildfly>27.0.0.Final</version.wildfly>
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>jakarta.platform</groupId>
@@ -33,9 +33,9 @@
             <version>${primefaces.version}</version>
             <classifier>jakarta</classifier>
         </dependency>
-        
+
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -69,7 +69,7 @@
                                 <artifactItem>
                                     <groupId>jakarta.persistence</groupId>
                                     <artifactId>jakarta.persistence-api</artifactId>
-                                    <version>3.1.0</version>Ï
+                                    <version>3.1.0</version>ï¿½
                                     <type>jar</type>
                                 </artifactItem>
                             </artifactItems>
@@ -77,20 +77,26 @@
                     </execution>
                 </executions>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-jar-maven-plugin</artifactId>
                 <configuration>
-                    <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#${version.wildfly}</feature-pack-location>
+                    <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#${version.wildfly}
+                    </feature-pack-location>
                     <layers>
+                        <layer>cdi</layer>
                         <layer>ejb-lite</layer>
+                        <layer>datasources</layer>
                         <layer>jpa</layer>
                         <layer>jsf</layer>
                     </layers>
                     <plugin-options>
                         <jboss-fork-embedded>true</jboss-fork-embedded>
                     </plugin-options>
+                    <jvmArguments>
+                        <arg>-agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n</arg>
+                    </jvmArguments>
                 </configuration>
                 <executions>
                     <execution>

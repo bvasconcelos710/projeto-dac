@@ -6,26 +6,24 @@ package br.com.mycompany.projectestagio.model.DAO;
 
 import br.com.mycompany.projectestagio.model.entities.Empresa;
 import br.com.mycompany.projectestagio.model.utils.PersistenceFactory;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.util.List;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
+
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 
 @Named
 public class EmpresaDAO implements DAO<Empresa>, Serializable {
     private static final long serialVersionUID = 1L;
-    
-    private EntityManager manager = PersistenceFactory.getEntityManager();
-    
+
+    @PersistenceContext(unitName = "my_persistence_unit")
+    private EntityManager manager;
+
     @Override
     public void inserir(Empresa empresa) {
-        manager.getTransaction().begin();
         manager.persist(empresa);
-        manager.getTransaction().commit();
-        manager.close(); 
     }
     
     @Override
@@ -35,28 +33,21 @@ public class EmpresaDAO implements DAO<Empresa>, Serializable {
 
     @Override
     public void atualizar(Empresa empresa) {
-        manager.getTransaction().begin();
         manager.merge(empresa);
-        manager.getTransaction().commit();
-        manager.close(); 
     }
 
     @Override
     public void remover(Long id) {
-        manager.getTransaction().begin();
         Empresa empresa = manager.find(Empresa.class, id);
         if (empresa != null) {
         manager.remove(empresa);
         }
-        manager.getTransaction().commit();
-        manager.close();
     }
 
     @Override
-    public List listar() {
+    public List<Empresa> listar() {
         TypedQuery<Empresa> query = manager.createQuery("SELECT e FROM Empresa e", Empresa.class);
         List<Empresa> empresas = query.getResultList();
-        manager.close();
         return empresas;
     }
     

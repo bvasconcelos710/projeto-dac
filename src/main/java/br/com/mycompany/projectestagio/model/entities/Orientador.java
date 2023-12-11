@@ -21,9 +21,6 @@ public class Orientador implements Serializable  {
     private String nome;
     private String disciplina;
 
-    @OneToMany
-    private Set<Aluno> alunos = new HashSet<>();
-
     public Orientador() {
     }
 
@@ -61,10 +58,6 @@ public class Orientador implements Serializable  {
 
     public void setDisciplina(String disciplina) {
         this.disciplina = disciplina;
-    }
-                
-    public Set<Aluno> getAlunos() {
-        return alunos;
     }
    
    }
