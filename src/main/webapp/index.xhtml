@@ -10,31 +10,23 @@
     <h:outputStylesheet library="css" name="styles.css"/>
 </h:head>
 <h:body>
-    <div class="main">
-        
-        <h:form>
+
+    <h:form>
         <p:menubar>
             <p:submenu label="Opções">
-                <p:menuitem value="Aluno" action="/aluno?faces-redirect=true" />
-                <p:menuitem value="Empresa" action="/empresa?faces-redirect=true" />
-                <p:menuitem value="Orientador" action="/orientador?faces-redirect=true" />
-                <p:menuitem value="Estágio" action="/estagio?faces-redirect=true" />
+                <p:menuitem value="Aluno" action="/aluno?faces-redirect=true"/>
+                <p:menuitem value="Empresa" action="/empresa?faces-redirect=true"/>
+                <p:menuitem value="Orientador" action="/orientador?faces-redirect=true"/>
+                <p:menuitem value="Estágio" action="/estagio?faces-redirect=true"/>
+                <p:separator/>
+                <p:menuitem value="Avaliação Orientador" action="/avaliacao_orientador?faces-redirect=true"/>
+                <p:menuitem value="Avaliação Empresa" action="/avaliacao_empresa?faces-redirect=true"/>
             </p:submenu>
         </p:menubar>
     </h:form>
-        
-    </div>
-    
-    <h:form>
-			<h3>
-				<h:commandLink value="Ir para cadastro de Editoras"
-					action="cadastro-editora-layout?faces-redirect=true" />
-			</h3>
-			<h3>
-				<h:commandLink value="Ir para cadastro de Livros"
-					action="cadastro-livro-layout?faces-redirect=true" />
-			</h3>
-		</h:form>
-    
+
+
+    <p>Selecione uma das opções no menu</p>
+
 </h:body>
 </html>

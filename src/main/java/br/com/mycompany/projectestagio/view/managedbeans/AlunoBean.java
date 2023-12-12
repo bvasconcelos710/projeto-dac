@@ -1,7 +1,6 @@
 package br.com.mycompany.projectestagio.view.managedbeans;
 
 import br.com.mycompany.projectestagio.controller.services.AlunoService;
-import br.com.mycompany.projectestagio.model.DAO.AlunoDAO;
 import br.com.mycompany.projectestagio.model.entities.Aluno;
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.application.FacesMessage;
@@ -29,7 +28,6 @@ public class AlunoBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private AlunoService alunoService;
-    private AlunoDAO alunoDAO;
 
     private List<Aluno> alunos = new ArrayList<>();
 
@@ -37,14 +35,13 @@ public class AlunoBean implements Serializable {
     private List<Aluno> alunosSelecionados;
 
     @Inject
-    public AlunoBean(AlunoService alunoService, AlunoDAO alunoDAO) {
+    public AlunoBean(AlunoService alunoService) {
         this.alunoService = alunoService;
-        this.alunoDAO = alunoDAO;
     }
 
     @PostConstruct
     public void init() {
-        this.alunos = this.alunoDAO.listar();
+        this.alunos = this.alunoService.listar();
     }
 
     public void salvar() {
@@ -57,7 +54,7 @@ public class AlunoBean implements Serializable {
                 this.alunoService.editar(alunoSelecionado);
                 context.addMessage(null, new FacesMessage("Aluno editado com sucesso!"));
             }
-            this.alunos = this.alunoDAO.listar();
+            this.alunos = this.alunoService.listar();
         } catch (Exception e) {
             FacesMessage mensagem = new FacesMessage(e.getMessage());
             mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);

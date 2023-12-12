@@ -5,6 +5,8 @@
 package br.com.mycompany.projectestagio.model.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -129,6 +131,17 @@ public class Estagio implements Serializable {
     public void setOrientador(Orientador orientador) {
         this.orientador = orientador;
     }
-   
-        
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Estagio estagio = (Estagio) o;
+        return cargaHoraria == estagio.cargaHoraria && totalHoras == estagio.totalHoras && Objects.equals(id, estagio.id) && Objects.equals(inicio, estagio.inicio) && Objects.equals(fim, estagio.fim) && Objects.equals(status, estagio.status) && Objects.equals(aluno, estagio.aluno) && Objects.equals(empresa, estagio.empresa) && Objects.equals(orientador, estagio.orientador);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, inicio, fim, cargaHoraria, totalHoras, status, aluno, empresa, orientador);
+    }
 }

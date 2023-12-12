@@ -10,6 +10,8 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
         <class>br.com.mycompany.projectestagio.model.entities.Empresa</class>
         <class>br.com.mycompany.projectestagio.model.entities.Estagio</class>
         <class>br.com.mycompany.projectestagio.model.entities.Orientador</class>
+        <class>br.com.mycompany.projectestagio.model.entities.AvaliacaoOrientador</class>
+        <class>br.com.mycompany.projectestagio.model.entities.AvaliacaoEmpresa</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="jakarta.persistence.jdbc.url"

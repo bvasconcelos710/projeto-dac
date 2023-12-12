@@ -12,6 +12,19 @@
         <h:outputStylesheet library="css" name="bootstrap.min.css"/>
     </h:head>
     <h:body>
+        <h:form>
+            <p:menubar>
+                <p:submenu label="Opções">
+                    <p:menuitem value="Aluno" action="/aluno?faces-redirect=true"/>
+                    <p:menuitem value="Empresa" action="/empresa?faces-redirect=true"/>
+                    <p:menuitem value="Orientador" action="/orientador?faces-redirect=true"/>
+                    <p:menuitem value="Estágio" action="/estagio?faces-redirect=true"/>
+                    <p:separator/>
+                    <p:menuitem value="Avaliação Orientador" action="/avaliacao_orientador?faces-redirect=true"/>
+                    <p:menuitem value="Avaliação Empresa" action="/avaliacao_empresa?faces-redirect=true"/>
+                </p:submenu>
+            </p:menubar>
+        </h:form>
         <!-- Formulário para adicionar orientador -->
         <h:form id="formOrientador">
             <p:growl id="messages" showDetail="true"/>
