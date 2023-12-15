@@ -108,7 +108,7 @@
                       responsive="true">
                 <p:outputPanel id="manage-estagio-content" class="ui-fluid">
                     <p:outputPanel rendered="#{not empty estagioBean.estagioSelecionado}">
-                        <p:messages id="dialog-messages" showDetail="true" autoUpdate="true" closable="true" />
+                        <p:messages id="dialog-messages" showDetail="true" closable="true" />
                         <p:panelGrid columns="2" style="margin-bottom:1rem">
                             <p:outputLabel for="orientador-group" value="Orientador:"/>
                             <p:selectOneMenu id="orientador-group" value="#{estagioBean.estagioSelecionado.orientador.id}">

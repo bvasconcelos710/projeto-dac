@@ -86,7 +86,9 @@
         <h:form id="dialogs">
             <p:dialog header="Adicionar avaliação do orientador" showEffect="fade" modal="true" widgetVar="manageAvaliacaoOrientadorDialog"
                       responsive="true">
+                
                 <p:outputPanel id="manage-avaliacao-content" class="ui-fluid">
+                    <p:panelGrid columns="2">
                     <p:outputPanel>
                         <p>Legenda:</p>
                         <div>
@@ -125,6 +127,7 @@
                             <p:rating stars="4" value="#{avaliacaoOrientadorBean.avaliacaoOrientadorSelecionado.iniciativa}" />
                         </p:panelGrid>
                     </p:outputPanel>
+                </p:panelGrid>
                 </p:outputPanel>
                 <f:facet name="footer">
                     <p:commandButton value="Salvar" icon="pi pi-check" actionListener="#{avaliacaoOrientadorBean.salvar}"

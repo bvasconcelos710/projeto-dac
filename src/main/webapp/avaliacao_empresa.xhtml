@@ -84,9 +84,10 @@
         </h:form>
 
         <h:form id="dialogs">
-            <p:dialog header="Adicionar avaliação do Empresa" showEffect="fade" modal="true" widgetVar="manageAvaliacaoEmpresaDialog"
+            <p:dialog header="Adicionar avaliação da Empresa" showEffect="fade" modal="true" widgetVar="manageAvaliacaoEmpresaDialog"
                       responsive="true">
                 <p:outputPanel id="manage-avaliacao-content" class="ui-fluid">
+                    <p:panelGrid columns="2">
                     <p:outputPanel>
                         <p>Legenda:</p>
                         <div>
@@ -125,6 +126,7 @@
                             <p:rating stars="4" value="#{avaliacaoEmpresaBean.avaliacaoEmpresaSelecionado.desempenho}" />
                         </p:panelGrid>
                     </p:outputPanel>
+                    </p:panelGrid>
                 </p:outputPanel>
                 <f:facet name="footer">
                     <p:commandButton value="Salvar" icon="pi pi-check" actionListener="#{avaliacaoEmpresaBean.salvar}"
